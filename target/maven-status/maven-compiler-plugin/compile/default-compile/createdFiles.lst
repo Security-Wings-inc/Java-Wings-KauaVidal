@@ -1,6 +1,7 @@
 processador\ProcessadorMetodo.class
 ram\RamDAO.class
 rede\RedeDAOVm.class
+authenticator\JavaMail$1.class
 processos\Navegadores.class
 volume\Volume.class
 org\example\ConsoleService$1.class
@@ -20,6 +21,7 @@ rede\Rede.class
 volume\VolumeService.class
 ram\RamService.class
 processos\Processos.class
+authenticator\JavaMail.class
 rede\RedeService.class
 org\example\ConsoleDAOVm.class
 org\example\Console.class

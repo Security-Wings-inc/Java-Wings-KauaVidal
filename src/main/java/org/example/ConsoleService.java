@@ -1,5 +1,6 @@
 package org.example;
 import Log.LogMonitoramento;
+import authenticator.JavaMail;
 import processos.*;
 import rede.RedeService;
 import volume.VolumeService;
@@ -78,7 +79,6 @@ public class ConsoleService {
         console.setPassword(senha);
         new ConsoleDAOVm().login(console);
         //new ConsoleDAO().login(console);
-
         if (!console.getEntrou()) {
             System.out.println("""
                     /* ╔═════════════════════════════════════════╗ */
@@ -90,140 +90,169 @@ public class ConsoleService {
                       """);
 
         } else {
+
+            JavaMail.sendEmail(usuario);
             System.out.println("""
-                    /* ╔═════════════════════════════════════════╗ */
-                    /* ║                                         ║ */
-                    /* ║                 LOGADO                  ║ */
-                    /* ║        LOGIN REALIZADO COM SUCESSO      ║ */
-                    /* ║                                         ║ */
-                    /* ╚═════════════════════════════════════════╝ */
-                      """);
-            while (executar) {
+                    /* ╔══════════════════════════╗ */
+                    /* ║  Código de verificação   ║
+                       ║  enviado com sucesso,    ║
+                       ║  verifique seu email !   ║
+                       ║  e olhe a caixa de SPAM  ║  */
+                    /* ╚══════════════════════════╝ */""");
+            String code;
+            System.out.println("""
+                    /* ╔══════════════════════════╗ */ 
+                    /* ║  Informe o codigo 2FA:   ║ */""");
+            code = in.nextLine();
+            System.out.println("""
+                    /* ╚══════════════════════════╝ */""");
+
+            if (code.equals(JavaMail.getCode())) {
                 System.out.println("""
-                                            
-                         /* ╔═════════════════════════════════════╗ */
-                         /* ║    Oque deseja realizar, %s    ║ */
-                         /* ║═════════════════════════════════════║ */
-                         /* ║   1 - Coletar Dados                 ║ */
-                         /* ║   2 - Encerrar Processos            ║ */
-                         /* ║   3 - Sair                          ║ */
-                         /* ║═════════════════════════════════════║ */
-                         /* ║  Digite uma opção:                  ║ */
-                         /* ╚═════════════════════════════════════╝ */
-                        """.formatted(console.getNome()));
-                Integer opcao = in.nextInt();
-                console.setOpcao(opcao);
-                LogMonitoramento.LogOpcao(console, true);
-
-                switch (opcao) {
-
-                    case 1:
-                        System.out.println("""
-                         /* ╔═════════════════════════════════════╗ */
-                         /* ║    Oque deseja realizar, %s    ║ */
-                         /* ║═════════════════════════════════════║ */
-                         /* ║   1 - Iniciar Coleta de Dados       ║ */
-                         /* ║   2 - Parar                         ║ */
-                         /* ║═════════════════════════════════════║ */
-                         /* ║  Digite uma opção:                  ║ */
-                         /* ╚═════════════════════════════════════╝ */
-                        """.formatted(console.getNome()));
-
-                        Integer escolhaInt = escolhaScanner.nextInt();
-                        console.setEscolha(escolhaInt);
-
-                        if (escolhaInt == 1) {
-                            LocalDateTime localDateTime = LocalDateTime.now();
-                            generateLog("{" + formatadorDeData.format(localDateTime) + "} " +"[INFO] " + " Iniciando coleta... " + "\n");
-                            LogMonitoramento.LogEscolha(finalConsole);
-
-                            System.out.println("""
+                        /* ╔═════════════════════════════════════════╗ */
+                        /* ║                                         ║ */
+                        /* ║                 LOGADO                  ║ */
+                        /* ║        LOGIN REALIZADO COM SUCESSO      ║ */
+                        /* ║                                         ║ */
+                        /* ╚═════════════════════════════════════════╝ */
+                          """);
+                while (executar) {
+                    System.out.println("""
+                                                
                              /* ╔═════════════════════════════════════╗ */
-                             /* ║   2 - Parar                         ║ */
+                             /* ║    Oque deseja realizar, %s    ║ */
                              /* ║═════════════════════════════════════║ */
-                             /* ║  Digite a opção:                    ║ */
+                             /* ║   1 - Coletar Dados                 ║ */
+                             /* ║   2 - Encerrar Processos            ║ */
+                             /* ║   3 - Sair                          ║ */
+                             /* ║═════════════════════════════════════║ */
+                             /* ║  Digite uma opção:                  ║ */
                              /* ╚═════════════════════════════════════╝ */
-                            """);
+                            """.formatted(console.getNome()));
+                    Integer opcao = in.nextInt();
+                    console.setOpcao(opcao);
+                    LogMonitoramento.LogOpcao(console, true);
 
-                            TimerTask tarefa = new TimerTask() {
-                                Integer contagem = 0;
+                    switch (opcao) {
 
-                                public void run() {
-                                    contagem++;
-                                    System.out.println("Executando tarefa... Contagem: " + contagem);
-                                    VolumeService.coletarDadosDisco(finalConsole);
-                                    try {
-                                        ProcessadorService.coletaDeProcessador(finalConsole);
-                                    } catch (SQLException e) {
-                                        throw new RuntimeException(e);
-                                    }
-                                    RamService.coletaDeRam(finalConsole);
-                                    RedeService.coletaRede(finalConsole);
+                        case 1:
+                            System.out.println("""
+                                     /* ╔═════════════════════════════════════╗ */
+                                     /* ║    Oque deseja realizar, %s    ║ */
+                                     /* ║═════════════════════════════════════║ */
+                                     /* ║   1 - Iniciar Coleta de Dados       ║ */
+                                     /* ║   2 - Parar                         ║ */
+                                     /* ║═════════════════════════════════════║ */
+                                     /* ║  Digite uma opção:                  ║ */
+                                     /* ╚═════════════════════════════════════╝ */
+                                    """.formatted(console.getNome()));
 
-                                    TimerTask task = new TimerTask() {
-                                        @Override
-                                        public void run() {
-                                            try {
-                                                finalConsole.setContagem(contagem);
-                                                LogMonitoramento.LogEscolha(finalConsole);
+                            Integer escolhaInt = escolhaScanner.nextInt();
+                            console.setEscolha(escolhaInt);
 
-                                            } catch (IOException e) {
-                                                System.out.println("ERROR");
-                                            }
+                            if (escolhaInt == 1) {
+                                LocalDateTime localDateTime = LocalDateTime.now();
+                                generateLog("{" + formatadorDeData.format(localDateTime) + "} " + "[INFO] " + " Iniciando coleta... " + "\n");
+                                LogMonitoramento.LogEscolha(finalConsole);
+
+                                System.out.println("""
+                                         /* ╔═════════════════════════════════════╗ */
+                                         /* ║   2 - Parar                         ║ */
+                                         /* ║═════════════════════════════════════║ */
+                                         /* ║  Digite a opção:                    ║ */
+                                         /* ╚═════════════════════════════════════╝ */
+                                        """);
+
+                                TimerTask tarefa = new TimerTask() {
+                                    Integer contagem = 0;
+
+                                    public void run() {
+                                        contagem++;
+                                        System.out.println("Executando tarefa... Contagem: " + contagem);
+                                        VolumeService.coletarDadosDisco(finalConsole);
+                                        try {
+                                            ProcessadorService.coletaDeProcessador(finalConsole);
+                                        } catch (SQLException e) {
+                                            throw new RuntimeException(e);
                                         }
-                                    };
+                                        RamService.coletaDeRam(finalConsole);
+                                        RedeService.coletaRede(finalConsole);
 
-                                    timer2.scheduleAtFixedRate(task, 1000, 10000);
+                                        TimerTask task = new TimerTask() {
+                                            @Override
+                                            public void run() {
+                                                try {
+                                                    finalConsole.setContagem(contagem);
+                                                    LogMonitoramento.LogEscolha(finalConsole);
+
+                                                } catch (IOException e) {
+                                                    System.out.println("ERROR");
+                                                }
+                                            }
+                                        };
+
+                                        timer2.scheduleAtFixedRate(task, 1000, 10000);
 
 
+                                    }
+                                };
+                                timer.scheduleAtFixedRate(tarefa, 0, 1000L);
+
+
+                                boolean coletaAtiva = true;
+                                while (coletaAtiva) {
+                                    Integer novaEscolhaInt = escolhaScanner.nextInt();
+                                    if (novaEscolhaInt == 2) {
+                                        console.setEscolha(novaEscolhaInt);
+                                        timer.cancel();
+                                        System.out.println("""
+                                                 /* ╔═════════════════════════════════════════╗ */
+                                                 /* ║                                         ║ */
+                                                 /* ║        COLETA DE DADOS CANCELADA        ║ */
+                                                 /* ║                                         ║ */
+                                                 /* ╚═════════════════════════════════════════╝ */
+                                                """);
+                                        coletaAtiva = false;
+                                        LocalDateTime localDate = LocalDateTime.now();
+                                        generateLog("{" + formatadorDeData.format(localDate) + "} " + "[INFO] " + " Coleta de dados cancelada. " + "\n");
+                                    }
                                 }
-                            };
-                            timer.scheduleAtFixedRate(tarefa, 0, 1000L);
-
-
-                            boolean coletaAtiva = true;
-                            while (coletaAtiva) {
-                                Integer novaEscolhaInt = escolhaScanner.nextInt();
-                                if (novaEscolhaInt == 2) {
-                                    console.setEscolha(novaEscolhaInt);
-                                    timer.cancel();
-                                    System.out.println("""
+                            }
+                            break;
+                        case 2:
+                            System.out.println("""
                                      /* ╔═════════════════════════════════════════╗ */
                                      /* ║                                         ║ */
-                                     /* ║        COLETA DE DADOS CANCELADA        ║ */
+                                     /* ║        ENCERRAR PROCESSOS INCIADO       ║ */
                                      /* ║                                         ║ */
                                      /* ╚═════════════════════════════════════════╝ */
                                     """);
-                                    coletaAtiva = false;
-                                    LocalDateTime localDate = LocalDateTime.now();
-                                    generateLog("{" + formatadorDeData.format(localDate) + "} " +"[INFO] " + " Coleta de dados cancelada. " + "\n");
-                                }
-                            }
-                        }
-                        break;
-                    case 2:
-                        System.out.println("""
-                         /* ╔═════════════════════════════════════════╗ */
-                         /* ║                                         ║ */
-                         /* ║        ENCERRAR PROCESSOS INCIADO       ║ */
-                         /* ║                                         ║ */
-                         /* ╚═════════════════════════════════════════╝ */
-                        """);
-                        Navegadores.EncerrarProcessos();
-                        Outros.EncerrarProcessos();
-                        Utilitarios.EncerrarProcessos();
-                        break;
-                    case 3:
-                        executar = false;
-                        System.out.println("""
-                                 /* ╔═════════════════════════════════════════╗ */
-                                 /* ║                                         ║ */
-                                 /* ║                  ADEUS                  ║ */
-                                 /* ║                                         ║ */
-                                 /* ╚═════════════════════════════════════════╝ */
-                                """.formatted(console.getUser()));
-                    break;
+                            Navegadores.EncerrarProcessos();
+                            Outros.EncerrarProcessos();
+                            Utilitarios.EncerrarProcessos();
+                            break;
+                        case 3:
+                            executar = false;
+                            System.out.println("""
+                                     /* ╔═════════════════════════════════════════╗ */
+                                     /* ║                                         ║ */
+                                     /* ║                  ADEUS                  ║ */
+                                     /* ║                                         ║ */
+                                     /* ╚═════════════════════════════════════════╝ */
+                                    """.formatted(console.getUser()));
+                            break;
+                    }
                 }
+            }else {
+                System.out.println("""
+                    /* ╔═════════════════════════════════════════╗ */
+                    /* ║                                         ║ */
+                    /* ║                 ERRO!!!                 ║ */
+                    /* ║     CÓDIGO INVÁLIDO, TENTE NOVAMENTE    ║ */
+                    /* ║    EXECUTE O JAR PARA LOGAR NOVAMENTE   ║ */
+                    /* ║                                         ║ */
+                    /* ╚═════════════════════════════════════════╝ */
+                      """);
             }
         }
     }
