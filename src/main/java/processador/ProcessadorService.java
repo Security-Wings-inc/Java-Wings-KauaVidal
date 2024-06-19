@@ -33,7 +33,7 @@ public class ProcessadorService {
         processador1.setFrequencia(frequencia);
         processador1.setUso(usoDoProcessador);
         new ProcessadorDAO().cadastrarDados(processador1, console);
-//        new ProcessadorDAOVm().cadastrarDados(processador1, console);
+        new ProcessadorDAOVm().cadastrarDados(processador1, console);
 
     }
 }

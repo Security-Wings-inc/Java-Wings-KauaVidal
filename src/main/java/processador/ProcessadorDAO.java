@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 public class ProcessadorDAO {
     public void cadastrarDados(ProcessadorMetodo metodoProcessador, Console console) throws SQLException {
 
-        String sql = "UPDATE ComputadorESpec SET processadorModelo = ?, processadorNucleosFisicos = ?, processadorNucleosLógicos = ?, processadorFrequencia = ? WHERE idComputador = ?";
+        String sql = "UPDATE ComputadorESpec SET processadorModelo = ?, processadorNucleosFisicos = ?, processadorNucleosLogicos = ?, processadorFrequencia = ? WHERE idComputador = ?";
         String sql2 = "INSERT INTO Monitoramento (processadorUso, dataCaptura, fkComputador) VALUES (?, ?, ?)";
         String sql3 = "SELECT idMonitoramento FROM Monitoramento ORDER BY idMonitoramento";
 
@@ -24,7 +24,7 @@ public class ProcessadorDAO {
             ps.setString(2, metodoProcessador.getNucleosFisicos());
             ps.setString(3, metodoProcessador.getNucleosLogicos());
             ps.setString(4, metodoProcessador.getFrequencia());
-            ps.setInt(5, console.getIdComputador());
+            ps.setInt(5, console.getIdComputadorVm());
             ps.execute();
             ps.close();
 
@@ -37,11 +37,12 @@ public class ProcessadorDAO {
                 }
             }
 
+            System.out.println("idMonitoramento: " + console.getIdMonitoramento());
             try (PreparedStatement ps2 = BancoLooca.getbancoLooca2().prepareStatement(sql2)) {
 
                 ps2.setString(1, metodoProcessador.getUso());
                 ps2.setObject(2, formatadorDeData.format(LocalDateTime.now()));
-                ps2.setInt(3, console.getIdComputador());
+                ps2.setInt(3, console.getIdComputadorVm());
                 ps2.execute();
             } catch (SQLException e) {
                 throw new RuntimeException("Erro ao inserir dados na tabela Monitoramento", e);

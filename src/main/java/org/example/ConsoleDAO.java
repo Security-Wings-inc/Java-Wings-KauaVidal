@@ -15,7 +15,7 @@ public class ConsoleDAO {
 
     public Console login(Console console) {
 
-            String sql1 = "INSERT INTO ComputadorESpec (fkEmpresa, fkUsuario) VALUES (?, ?)";
+            String sql1 = "INSERT INTO ComputadorESpec (idComputador, fkEmpresa, fkUsuario) VALUES (?, ?, ?)";
             String sql2 = "INSERT INTO Monitoramento (fkComputador) VALUES (?)";
 
 
@@ -25,12 +25,14 @@ public class ConsoleDAO {
                 console = buscarDadaos(console);
 
                 if (console.getIdComputador() == null || console.getIdComputador() == 0) {
-                    ps1.setInt(1, console.getIdEmpresa());
-                    ps1.setInt(2, console.getIdUser());
+                    ps1.setInt(1, console.getIdComputadorVm());
+                    ps1.setInt(2, console.getIdEmpresa());
+                    ps1.setInt(3, console.getIdUser());
                     ps1.executeUpdate();
 
                     console = buscarDadaos(console);
                 }
+
 
                 ps2.setInt(1, console.getIdComputador());
                 ps2.executeUpdate();

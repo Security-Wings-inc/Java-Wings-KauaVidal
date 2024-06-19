@@ -17,7 +17,7 @@ public class VolumeDAO {
         try {
             ps1 = BancoLooca.getbancoLooca2().prepareStatement(sql1);
             ps1.setString(1, volume.getTotalDisco());
-            ps1.setInt(2, console.getIdComputador());
+            ps1.setInt(2, console.getIdComputadorVm());
             ps1.executeUpdate();
             ps1.close();
 

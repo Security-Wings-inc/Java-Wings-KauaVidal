@@ -19,7 +19,7 @@ public class RedeService {
             if (bytesEnviados != 0) {
                 rede.setBytesEnviados(bytesEnviados);
                 new RedeDAO().cadastrarDados(rede, console);
-//                new RedeDAOVm().cadastrarDados(rede, console);
+                new RedeDAOVm().cadastrarDados(rede, console);
             }
         }
     }

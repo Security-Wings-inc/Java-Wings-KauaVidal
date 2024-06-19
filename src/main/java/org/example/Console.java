@@ -19,6 +19,24 @@ public class Console {
     private Integer idEmpresa = 0;
     private Integer idComputador = 0;
     private Integer idMonitoramento = 0;
+    private Integer idComputadorVm = 0;
+    private Integer idMonitoramentoVm = 0;
+
+    public Integer getIdMonitoramentoVm() {
+        return idMonitoramentoVm;
+    }
+
+    public void setIdMonitoramentoVm(Integer idMonitoramentoVm) {
+        this.idMonitoramentoVm = idMonitoramentoVm;
+    }
+
+    public Integer getIdComputadorVm() {
+        return idComputadorVm;
+    }
+
+    public void setIdComputadorVm(Integer idComputadorVm) {
+        this.idComputadorVm = idComputadorVm;
+    }
 
     private LocalDateTime tempo;
 
@@ -145,5 +163,143 @@ public class Console {
 
     public void setContagem(Integer contagem) {
         this.contagem = contagem;
+    }
+
+// SLACK
+private double processadorUso;
+    private double ramUso;
+    private double discoUso;
+    private Date dataColeta;
+    private Integer fkComputador;
+    private long bytesEnviados;
+
+    public double getUsoProcessador() {
+        return processadorUso;
+    }
+
+    public void setUsoProcessador(double processadorUso) {
+        this.processadorUso = processadorUso;
+    }
+
+    public double getUsoRam() {
+        return ramUso;
+    }
+
+    public void setUsoRam(double ramUso) {
+        this.ramUso = ramUso;
+    }
+
+    public double getUsoDisco() {
+        return discoUso;
+    }
+
+    public void setUsoDisco(double discoUso) {
+        this.discoUso = discoUso;
+    }
+
+    public Date getDataColeta() {
+        return dataColeta;
+    }
+
+    public void setDataColeta(Date dataColeta) {
+        this.dataColeta = dataColeta;
+    }
+
+    public Integer getFkComputador() {
+        return fkComputador;
+    }
+
+    public void setFkComputador(Integer fkComputador) {
+        this.fkComputador = fkComputador;
+    }
+
+    public long getBytesEnviados() {
+        return bytesEnviados;
+    }
+
+    public void setBytesEnviados(long bytesEnviados) {
+        this.bytesEnviados = bytesEnviados;
+    }
+
+    private Boolean enviado;
+    private String ramWarning;
+    private String ramDanger;
+    private String processadorWarning;
+    private String processadorDanger;
+    private String internetWarning;
+    private String internetDanger;
+    private String discoWarning;
+    private String discoDanger;
+
+    public Boolean getEnviado() {
+        return enviado;
+    }
+
+    public void setEnviado(Boolean enviado) {
+        this.enviado = enviado;
+    }
+
+    public String getRamWarning() {
+        return ramWarning;
+    }
+
+    public void setRamWarning(String ramWarning) {
+        this.ramWarning = ramWarning;
+    }
+
+    public String getRamDanger() {
+        return ramDanger;
+    }
+
+    public void setRamDanger(String ramDanger) {
+        this.ramDanger = ramDanger;
+    }
+
+    public String getProcessadorWarning() {
+        return processadorWarning;
+    }
+
+    public void setProcessadorWarning(String processadorWarning) {
+        this.processadorWarning = processadorWarning;
+    }
+
+    public String getProcessadorDanger() {
+        return processadorDanger;
+    }
+
+    public void setProcessadorDanger(String processadorDanger) {
+        this.processadorDanger = processadorDanger;
+    }
+
+    public String getInternetWarning() {
+        return internetWarning;
+    }
+
+    public void setInternetWarning(String internetWarning) {
+        this.internetWarning = internetWarning;
+    }
+
+    public String getInternetDanger() {
+        return internetDanger;
+    }
+
+    public void setInternetDanger(String internetDanger) {
+        this.internetDanger = internetDanger;
+    }
+
+    public String getDiscoWarning() {
+        return discoWarning;
+    }
+
+    public void setDiscoWarning(String discoWarning) {
+        this.discoWarning = discoWarning;
+    }
+
+    public String getDiscoDanger() {
+        return discoDanger;
+    }
+
+    public void setDiscoDanger(String discoDanger) {
+        this.discoDanger = discoDanger;
     }
 }

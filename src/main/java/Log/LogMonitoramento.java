@@ -97,7 +97,7 @@ public class LogMonitoramento {
                 try(PreparedStatement ps2 = BancoLooca.getbancoLooca2().prepareStatement(sql2)) {
                     try (ResultSet rs2 = ps2.executeQuery()) {
                         while (rs2.next()) {
-                            Double ramUso = (Double) rs2.getObject("ramUso");
+                            Double ramUso = rs2.getObject("ramUso") instanceof Double ? (Double) rs2.getObject("ramUso") : null;
                             if (ramUso != null) {
                                 ram.add(ramUso);
                             }
@@ -124,7 +124,7 @@ public class LogMonitoramento {
                 try(PreparedStatement ps4 = BancoLooca.getbancoLooca2().prepareStatement(sql4)) {
                     try(ResultSet rs4 = ps4.executeQuery()) {
                         while (rs4.next()) {
-                            Double discoUso = (Double) rs4.getObject("discoUso");
+                            Double discoUso = rs4.getObject("discoUso") instanceof Double ? (Double) rs4.getObject("discoUso") : null;
                             if(discoUso != null) {
                                 disco.add(discoUso);
                             }

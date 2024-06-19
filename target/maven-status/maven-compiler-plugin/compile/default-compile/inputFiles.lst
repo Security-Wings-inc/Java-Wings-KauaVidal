@@ -1,30 +1,28 @@
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\Slack\PublishingMessage.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\volume\VolumeDAOVm.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\ram\RamService.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\org\example\ConsoleService.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\processador\ProcessadorDAO.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\Heranca\Componentes.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\org\example\ConsoleDAO.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\processador\ProcessadorMetodo.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\volume\VolumeDAO.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\rede\RedeDAOVm.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\ram\RamDAO.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\volume\VolumeService.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\Log\LogMonitoramento.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\org\example\Console.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\processador\ProcessadorDAOVm.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\rede\RedeService.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\volume\Volume.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\org\example\ConsoleDAOVm.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\processos\Navegadores.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\processos\Utilitarios.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\authenticator\JavaMail.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\rede\Rede.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\processos\Processos.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\BancoDeDados\BancoLooca.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\ram\RamDAOVm.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\processador\ProcessadorService.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\processos\Outros.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\Slack\SlackEnvio.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\ram\Ram.java
-D:\Security-Wings-inc(PROJETO PI)\Java-Wings-KauaVidal\src\main\java\rede\RedeDAO.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\processos\Navegadores.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\volume\VolumeDAOVm.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\volume\Volume.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\rede\RedeService.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\ram\RamDAO.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\org\example\ConsoleDAOVm.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\org\example\ConsoleDAO.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\volume\VolumeService.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\ram\RamService.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\processos\Processos.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\org\example\ConsoleService.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\BancoDeDados\BancoLooca.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\org\example\Console.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\Slack\SlackIntegration.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\rede\Rede.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\volume\VolumeDAO.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\processador\ProcessadorService.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\Log\LogMonitoramento.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\processador\ProcessadorMetodo.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\Heranca\Componentes.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\rede\RedeDAOVm.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\processador\ProcessadorDAO.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\processos\Utilitarios.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\processador\ProcessadorDAOVm.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\ram\Ram.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\rede\RedeDAO.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\ram\RamDAOVm.java
+D:\Security-Wings-inc(PROJETO PI)\ultimo jar\Jar Individual\Java-Wings-KauaVidal\src\main\java\processos\Outros.java

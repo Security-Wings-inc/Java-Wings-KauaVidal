@@ -11,11 +11,8 @@ NC='\033[0m' # No Color
 CONTAINER_NAME="SecurityWingsBD"
 
 echo -e "${CYAN}[BOT Security-Wings]:${YELLOW} Olá querido usuário ${NC}"
-sudo apt-get install -y pv >/dev/null 2>&1
+
 sudo apt-get update >/dev/null 2>&1
-sudo apt install dialog >/dev/null 2>&1
-dialog --version
-sleep 1
 
 echo -e "${CYAN}[BOT Security-Wings]:${YELLOW} Irei fazer a instalação e configuração de tudo necessário para o sistema funcionar perfeitamente!${NC}"
 echo
@@ -136,14 +133,19 @@ echo -e "${CYAN}[BOT Security-Wings]:${YELLOW} Vou iniciar a configuração do D
 sudo systemctl start docker
 sudo systemctl enable docker
 sudo docker pull mysql:5.7
-sudo docker run -d -p 3306:3306 --name SecurityWingsBD -e "MYSQL_DATABASE=securityWings" -e "MYSQL_ROOT_PASSWORD=secwings100" mysql:5.7
+sudo docker run -d -p 3306:3306 --name SecurityWingsBD -e "MYSQL_DATABASE=securityWings" -e "MYSQL_ROOT_PASSWORD=Urubu.100" mysql:5.7
 echo -e "${CYAN}[BOT Security-Wings]: ${YELLOW}Estamos criando e configurando o container, aguarde 30 segundos por favor${NC}"
 sudo docker start SecurityWingsBD
 
 sleep 30
-echo  -e "${CYAN}[BOT Security-Wings]:${YELLOW} Vou iniciar a criação das tabelas MySQL${NC}"
-echo
-sudo docker exec -i SecurityWingsBD mysql -uroot -psecwings100 securityWings <<EOF
+
+
+sudo docker exec -i SecurityWingsBD mysql -uroot -pUrubu.100 securityWings <<EOF
+
+CREATE USER 'securityWings'@'%' identified by 'securityWings';
+GRANT ALL PRIVILEGES ON securityWings.* to 'securityWings'@'%';
+FLUSH PRIVILEGES;
+
 CREATE TABLE Empresa(
     idEmpresa int primary key auto_increment,
     nome varchar(45),
@@ -159,8 +161,7 @@ CREATE TABLE Endereco(
     rua varchar(50),
     cep char(9),
     complemento varchar(30),
-    fkEmpresa int,
-    constraint fk_endereco_empresa foreign key (fkEmpresa) references Empresa(idEmpresa)
+    fkEmpresa int
 );
 
 CREATE TABLE usuario(
@@ -171,8 +172,7 @@ CREATE TABLE usuario(
     isAdmin boolean,
     isManager boolean,
     senha varchar(255),
-    fkEmpresa int,
-    constraint fk_empresa_funcionario foreign key (fkEmpresa) references Empresa(idEmpresa)
+    fkEmpresa int
 );
 
 CREATE TABLE ComputadorESpec(
@@ -184,9 +184,7 @@ CREATE TABLE ComputadorESpec(
     discoTotal int,
     ramTotal int,
     fkEmpresa int,
-    fkUsuario int,
-    constraint fkEmpresa foreign key (fkEmpresa) references Empresa(idEmpresa),
-    constraint fkUsuarioComp foreign key(fkUsuario) references usuario(idUsuario)
+    fkUsuario int
 );
 
 CREATE TABLE Monitoramento(
@@ -196,8 +194,7 @@ CREATE TABLE Monitoramento(
     discoUso double,
     bytesEnviados long,
     dataCaptura varchar(100),
-    fkComputador int,
-    constraint fkComputadorMon foreign key (fkComputador) references ComputadorESpec(idComputador)
+    fkComputador int
 );
 
 CREATE TABLE parametrosDeAlerta (
@@ -211,8 +208,7 @@ CREATE TABLE parametrosDeAlerta (
     internetDanger varchar(50),
     discoWarning varchar(50),
     discoDanger varchar(50),
-    PRIMARY KEY (idEmpresa),
-    constraint fk_empresa_parametros foreign key(idEmpresa) references Empresa(idEmpresa)
+    PRIMARY KEY (idEmpresa)
 );
 
 CREATE TABLE categoria (
@@ -224,8 +220,7 @@ CREATE TABLE processos (
     idProcesso int primary key auto_increment,
     nomeAmigavel varchar(50),
     processoName varchar(50),
-    fkCategoria int,
-    constraint fk_categoria_processos foreign key (fkCategoria) references categoria(idCategoria)
+    fkCategoria int
 );
 
 CREATE TABLE permissoes (
@@ -234,13 +229,9 @@ CREATE TABLE permissoes (
     fkEmpresa INT,
     fkProcesso INT,
     isAllowed BOOLEAN,
-    isVisible BOOLEAN,
-    CONSTRAINT fk_empresa_permissoes FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa),
-    CONSTRAINT fk_processo_permissoes FOREIGN KEY (fkProcesso) REFERENCES processos(idProcesso)
+    isVisible BOOLEAN
 );
 EOF
-
-#sudo docker exec -i $CONTAINER_NAME mysql -uroot -psecwings100 securityWings -e "$SQL_COMMANDS"
 
 
 

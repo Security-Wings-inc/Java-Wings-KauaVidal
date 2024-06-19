@@ -23,13 +23,15 @@ public class RamDAO {
         try {
             ps = BancoLooca.getbancoLooca2().prepareStatement(sql);
             ps.setDouble(1, metodoRam.getMemoriaTotal());
-            ps.setDouble(2, console.getIdComputador());
+            ps.setDouble(2, console.getIdComputadorVm());
             ps.executeUpdate();
 
             ps2 = BancoLooca.getbancoLooca2().prepareStatement(sql2);
             ps2.setDouble(1, metodoRam.getRamEmUso());
             ps2.setDouble(2, console.getIdMonitoramento() + 1);
             ps2.executeUpdate();
+
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

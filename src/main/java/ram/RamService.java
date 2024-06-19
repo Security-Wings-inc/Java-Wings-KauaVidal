@@ -16,7 +16,7 @@ public class RamService {
         metodoRam.setMemoriaTotal(totalRam);
         metodoRam.setRamEmUso(Math.round(usoEmPorcentagemRam));
         new RamDAO().cadastrarDados(metodoRam, console);
-//        new RamDAOVm().cadastrarDados(metodoRam, console);
+        new RamDAOVm().cadastrarDados(metodoRam, console);
 
 
     }

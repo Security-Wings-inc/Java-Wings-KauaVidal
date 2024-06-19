@@ -14,7 +14,7 @@ public class VolumeService {
         List<Volume> volume = grupoDeDiscos.getVolumes();
         List<Disco> discos = grupoDeDiscos.getDiscos();
 
-        for (int i = 0; i < volume.size(); i++) {
+        for (int i = 0; i < discos.size(); i++) {
             double totalMemoria = volume.get(i).getTotal() / Math.pow(1024,3);
             double discoDisponivel = volume.get(i).getDisponivel() / Math.pow(1024,3);
             double totalDisco = discos.get(i).getTamanho() / Math.pow(1024,3);
@@ -28,7 +28,7 @@ public class VolumeService {
 
             volumeMet.setDiscoEmUso((double) Math.round(usoPorcentagemDisco));
             new VolumeDAO().cadastrarDados(volumeMet, console);
-//            new VolumeDAOVm().cadastrarDados(volumeMet, console);
+            new VolumeDAOVm().cadastrarDados(volumeMet, console);
 
         }
     }
